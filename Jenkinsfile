@@ -9,7 +9,7 @@ pipeline {
         stage('docker build and push ') {
             steps {
                 // This step should not normally be used in your script. Consult the inline help for details.
-                withDockerRegistry(credentialsId: 'docker', toolName: 'docker', url: 'https://index.docker.io/v1/') {
+                withDockerRegistry(credentialsId: 'docker', url: 'https://index.docker.io/v1/') {
                     sh '''
                     docker build -t saeedhmohd244/golang .
                     docker tag saeedhmohd244/golang saeedhmohd244/golang:latest
