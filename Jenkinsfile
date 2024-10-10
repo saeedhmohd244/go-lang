@@ -1,12 +1,9 @@
 pipeline {
     agent any
     
-    environment {
-        AZURE_CREDENTIALS = credentials('azure-credentials-id') // Azure service principal credentials
+    environment {// Azure service principal credentials
         IMAGE_NAME = 'saeedhmohd244/golang:latest' // or use your preferred tag
         REGISTRY_URL = 'your-registry.azurecr.io' // Azure Container Registry URL
-        AKS_CLUSTER_NAME = 'test'
-        RESOURCE_GROUP = 'saeedh'
     }
 
     stages {
@@ -35,7 +32,7 @@ pipeline {
                     // Get AKS credentials
                     sh '''
                     az account set --subscription 67eb602f-3151-41ed-b420-0b3b7b92fbbc
-                    az aks get-credentials --resource-group ${RESOURCE_GROUP} --name ${AKS_CLUSTER_NAME} --overwrite-existing
+                    az aks get-credentials --resource-group saeedh --name test --overwrite-existing
                     '''
 
                     // Deploy the new image to AKS
