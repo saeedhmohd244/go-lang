@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: golang
+  name: deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: golang
+  strategy: rollback
+  template:
+    metadata:
+      labels:
+        app: golang
+    spec:
+      containers:
+      - image: saeedhmohd244/golang:latest
+        name: golang
+        ports:
+        - containerPort: 8080
+
+
