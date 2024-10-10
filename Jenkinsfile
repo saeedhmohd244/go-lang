@@ -31,6 +31,7 @@ pipeline {
                 script {
                     // Get AKS credentials
                     sh '''
+                    az account show
                     az account set --subscription 67eb602f-3151-41ed-b420-0b3b7b92fbbc
                     az aks get-credentials --resource-group saeedh --name test --overwrite-existing
                     '''
