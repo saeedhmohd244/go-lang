@@ -6,7 +6,7 @@ pipeline {
                 git changelog: false, credentialsId: 'github', poll: false, url: 'https://github.com/saeedhmohd244/go-lang.git'
             }
         }
-        stage('docker build ') {
+        stage('docker build and push ') {
             steps {
                 // This step should not normally be used in your script. Consult the inline help for details.
                 withDockerRegistry(credentialsId: 'docker', toolName: 'docker', url: 'https://index.docker.io/v1/') {
